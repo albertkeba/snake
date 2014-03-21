@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Snake Game</title>
+	<script src="js/vendors/jquery-1.9.1.min.js"></script>
+	<script src="js/files/event.js"></script>
+	<script src="js/files/app.js"></script>
+	<script>
+		(function(){
+			'use strict';
+
+			$(document).ready(function(){
+				app.init('main');
+
+				app.foodCollision.attach(function(sender, rs){
+					$('#score').html( rs.point );
+				});
+
+				/**
+				 * right: 0
+				 * left	: 1
+				 * up	: 2
+				 * down	: 3
+				 *----------------
+				 * right 	vs 	left
+				 * left		vs 	right
+				 * up 		vs 	down
+				 * down		vs 	up
+				 */
+				window.addEventListener('keydown', function( e ){
+					if ( e.keyCode === 32 && app.active === false ){
+						app.active = true; //-- start
+						app.drawGame();
+					} else if ( e.keyCode === 32 && app.active === true ){
+						app.active = false; //-- pause
+						app.drawGame();
+					}
+						
+
+					if ( e.keyCode === 38 && app.direction !== 3 )
+						app.direction = 2; //-- up
+					else if ( e.keyCode === 40 && app.direction !== 2 )
+						app.direction = 3; //-- down
+					else if ( e.keyCode === 37 && app.direction !== 0 )
+						app.direction = 1; //-- left
+					else if ( e.keyCode === 39 && app.direction !== 1 )
+						app.direction = 0; //-- right
+				});
+			});
+		})(jQuery);
+	</script>
+</head>
+<body>
+	<div id="output">
+		<p>score: <span id="score"></span></p>
+	</div>
+	<div id="main"></div>
+</body>	
+</html>
