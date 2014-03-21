@@ -1,3 +1,7 @@
+/**
+ * @author	Albert KEBA MAGNAGNA
+ * @version	1.0
+ */
 var app = {
 	showDebug	: false,
 	active		: true,
