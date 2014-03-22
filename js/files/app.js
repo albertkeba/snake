@@ -129,6 +129,7 @@ var app = {
 
 						if ( (this.score % 100) === 0 )
 							this.level += 1;
+						console.log('score: '+this.score);
 
 						this.foodCollision.notify({
 							points: this.score
