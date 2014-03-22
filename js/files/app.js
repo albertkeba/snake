@@ -3,7 +3,6 @@
  * @version	1.0
  */
 var app = {
-	showDebug	: false,
 	active		: true,
 	context		: null,
 	score		: 0,
@@ -11,10 +10,10 @@ var app = {
 	direction	: 0,
 	speed		: 1,
 	canvasWidth	: 200,
-	canavasHeight: 200,
+	canavasHeight:200,
 	map			: new Array(20),
 	snake		: new Array(3),
-	foodCollision: new Event( this ),
+	foodCollision:new Event( this ),
 
 	init: function( id ){
 		'use strict';
@@ -24,8 +23,6 @@ var app = {
 		{
 			this.map[i] = new Array(20);
 		}
-
-		this.debug('init');
 
 		this.drawCanvas( id );
 		this.drawRandomFood();
@@ -44,8 +41,6 @@ var app = {
 
 		$('#' + id).append( canvas );
 
-		this.debug('draw canvas');
-
 		this.canvas = canvas;
 	},
 	drawRandomFood: function(){
@@ -63,7 +58,6 @@ var app = {
 		}
 
 		this.map[rndX][rndY] = 1;
-		this.debug(rndX, rndY);
 	},
 	drawSnake: function(){
 		'use strict';
@@ -174,12 +168,6 @@ var app = {
 
 			//this.speed - (this.level * 50)
 			setTimeout(this.drawGame.bind(this), 1000);
-		}
-	},
-	debug: function( data ) {
-		if ( this.showDebug )
-		{
-			console.log( data );
 		}
 	}
 };
